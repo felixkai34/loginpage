@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Custom Css -->
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        body{
+            font-family: 'Roboto', sans-serif;
+            padding: 0;
+            margin: 0;
+            background: url("https://img.freepik.com/premium-vector/gradient-abstract-square-triangle-background-vibrant-rainbow-multicolored-polygonal-backdrop-mobile-application-web-trendy-geometric-abstract-banner-corporative-flyer-design-mosaic-style_121461-3069.jpg?w=740");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-card{
+            width: 300px;
+            height: 70%;
+            padding: 20px 35px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .login-card-header h3{
+            text-align: center;
+            font-size: 25px;
+        }
+        #message{
+            text-align: center;
+            font-size: 10px;
+        }
+        .login-card-body div span{
+            display: block;
+            font-size: 13px;
+            margin-bottom:5px;
+        }
+        .login-card-body div input{
+            width: 90%;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid grey;
+            margin-bottom: 10px;
+            padding: 10px 2px;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            color:rgb(147, 145, 145);
+            font-size: 13px;
+            text-align: right;
+        }
+        a:hover{
+            color: rgb(35, 121, 218);
+            text-decoration: underline;
+        }
+        .login-card-body button{
+            border: none;
+            outline: none;
+            background: linear-gradient(
+                90deg,
+                #FF83CD,
+                #8BBAE9
+            );
+            width: 80%;
+            height: 30px;
+            border-radius: 15px;
+            display: block;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+        .login-card-other{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+            margin: 20px 0;
+        }
+        .social-logo i{
+            font-size: 25px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .login-card-footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+        }
+        .login-card-footer span{
+            margin: 10px;
+        }
+    </style>        
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-card">
+
+            <div class="login-card-header">
+                <h3>Login</h3>
+                <p id="message"></p>
+            </div>
+
+            <div class="login-card-body">
+
+                <div>
+                    <span>Email</span>
+                    <input type="email" id="email" placeholder="Type your email" required autofocus>
+                </div>
+
+                <div>
+                    <span>Password</span>
+                    <input type="password" id="pass" placeholder="Type your password" required>
+                </div>
+
+                <a href="#">Forgot password ?</a>
+
+                <button id="submit-btn">LOGIN</button>
+
+                <hr>
+
+                <div class="login-card-other">
+                    <span>Or Sign Up Using</span>
+                    <div class="social-logo">
+                        <i class="fa-brands fa-facebook" style="color: #3b5998;"></i>
+                        <i class="fa-brands fa-twitter" style="color: #00acee;"></i>
+                        <i class="fa-brands fa-google" style="color: #4285F4;"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="login-card-footer">
+                <span>Didn't have an account ?</span>
+                <a href="#">Sign Up</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/1df6c75a86.js" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script>
+        $(document).ready(function(){
+
+            $('#submit-btn').click(function(){
+
+                const email = 'example@gmail.com';
+                const password = 'example123'
+
+                let inputEmail = $('#email').val();
+                let inputPassword = $('#pass').val();
+
+                if (inputEmail === email && inputPassword === password) {
+                    $('#message').text('Your Email and Password are correct').css('color','green')
+                }else{
+                    $('#message').text('Your Email and Password are incorrect').css('color','red');
+                    $('#email').val('');
+                    $('#pass').val('');
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>
