@@ -159,18 +159,22 @@
 
             $('#submit-btn').click(function(){
 
-                const email = 'example@gmail.com';
-                const password = 'example123'
+                const DATA = [
+                    { 'email' : 'example@gmail.com' , 'password' : 'example123'},
+                    { 'email' : 'test@gmail.com' , 'password' : 'test123'}
+                ];
 
                 let inputEmail = $('#email').val();
                 let inputPassword = $('#pass').val();
 
-                if (inputEmail === email && inputPassword === password) {
-                    $('#message').text('Your Email and Password are correct').css('color','green')
-                }else{
+                let findemail = DATA.find(item => item.email===inputEmail); 
+
+                if (findemail === undefined) {
                     $('#message').text('Your Email and Password are incorrect').css('color','red');
                     $('#email').val('');
                     $('#pass').val('');
+                }else if(inputPassword === findemail.password){
+                    $('#message').text('Your Email and Password are correct').css('color','green')
                 }
             })
 
