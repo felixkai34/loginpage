@@ -51,6 +51,21 @@
             border-bottom: 1px solid grey;
             margin-bottom: 10px;
             padding: 10px 2px;
+            padding-left: 30px;
+        }
+        .login-card-body div{
+            position: relative;
+        }
+        .fa-solid{
+            position: absolute;
+            left: 0;
+            bottom: 21px;
+        }
+        .pass-show-hide-icon{
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            bottom: 23px;
         }
         a{
             text-decoration: none;
@@ -115,12 +130,15 @@
 
                 <div>
                     <span>Email</span>
+                    <i class="fa-solid fa-envelope"></i>
                     <input type="email" id="email" placeholder="Type your email" required autofocus>
                 </div>
 
                 <div>
                     <span>Password</span>
+                    <i class="fa-solid fa-user-lock"></i>
                     <input type="password" id="pass" placeholder="Type your password" required>
+                    <i class="fa-regular fa-eye pass-show-hide-icon"></i>
                 </div>
 
                 <a href="#">Forgot password ?</a>
@@ -169,13 +187,25 @@
 
                 let findemail = DATA.find(item => item.email===inputEmail); 
 
-                if (findemail === undefined) {
+                if (findemail === undefined || inputPassword !== findemail.password) {
                     $('#message').text('Your Email and Password are incorrect').css('color','red');
                     $('#email').val('');
                     $('#pass').val('');
                 }else if(inputPassword === findemail.password){
                     $('#message').text('Your Email and Password are correct').css('color','green')
                 }
+            });
+
+            $('.pass-show-hide-icon').click(function(){
+               $(this).toggleClass('fa-eye');
+               $(this).toggleClass('fa-eye-slash');
+
+               if ($('.pass-show-hide-icon').hasClass('fa-eye-slash')) {
+                    $('#pass').attr("type","text")
+               }else{
+                $('#pass').attr("type","password")
+               }
+
             })
 
         })
